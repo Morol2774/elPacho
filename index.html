@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Pacho Concept</title>
+<meta name="description" content="Concept website study for El Pacho Coffee Roasters, Toronto. Portfolio piece.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Permanent+Marker&family=Caveat:wght@500;700&family=Sedgwick+Ave+Display&family=Rock+Salt&family=Reenie+Beanie&display=swap" rel="stylesheet">
+<style>
+:root{
+  --milk:#fffffe; --paper:#fcfcfc; --ink:#151412; --brown:#3A2A22;
+  --orange:#FF5A1F; --muted:#6E655D; --line:rgba(21,20,18,.14);
+  --wide:125%;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--milk);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;font-stretch:var(--wide);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.caps{text-transform:uppercase;letter-spacing:.02em}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+
+/* film grain over whole page */
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:100;opacity:.11;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+@media (prefers-reduced-motion:reduce){body::after{animation:none}.ticker__row{animation:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;color:var(--paper);display:flex;flex-direction:column;background:var(--ink);overflow:hidden}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 55%}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(21,20,18,.55) 0%,rgba(21,20,18,.05) 28%,rgba(21,20,18,.12) 55%,rgba(21,20,18,.78) 100%)}
+.hero > *:not(.hero__img):not(.hero__side){position:relative;z-index:2}
+.hero > .hero__side{z-index:2}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px clamp(16px,4vw,48px);font-size:12px;font-weight:600}
+.nav__links{display:flex;gap:clamp(14px,2.4vw,34px)}
+.nav__links a{opacity:.85;transition:opacity .2s}
+.nav__links a:hover{opacity:1;color:var(--orange)}
+.hero__side{position:absolute;top:50%;right:clamp(16px,4vw,48px);transform:translateY(-50%);text-align:right;font-size:13px;font-weight:600;line-height:1.55}
+.badge{display:inline-block;border:1.5px solid currentColor;border-radius:50%;padding:7px 20px;font-size:15px;font-weight:600;margin-bottom:14px}
+.hero__mark{margin-top:auto;padding:0 clamp(16px,4vw,48px) clamp(26px,5vh,56px)}
+.wordmark{display:block;width:100%;height:auto;overflow:visible}
+.hero__sub{font-weight:700;font-size:clamp(22px,5.3vw,78px);line-height:1;letter-spacing:-.01em;margin-top:clamp(8px,1.4vw,18px);white-space:nowrap}
+.hero__foot{display:flex;justify-content:space-between;gap:16px;margin-top:22px;font-size:12px;font-weight:600;opacity:.9}
+
+/* ---------- TICKER ---------- */
+.ticker{background:var(--ink);color:var(--milk);overflow:hidden;border-top:1px solid rgba(255,255,255,.08)}
+.ticker__row{display:flex;gap:48px;white-space:nowrap;padding:16px 0;font-weight:600;font-size:14px;animation:tick 38s linear infinite;width:max-content}
+.ticker__row span::after{content:"●";color:var(--orange);margin-left:48px;font-size:9px;vertical-align:middle}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:clamp(72px,11vw,150px) 0}
+.label{font-size:12px;font-weight:700;display:flex;gap:14px;align-items:center;margin-bottom:clamp(28px,4vw,48px)}
+.label i{font-style:normal;color:var(--orange)}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+.statement{font-size:clamp(28px,4.4vw,64px);font-weight:600;line-height:1.08;letter-spacing:-.015em;max-width:18ch}
+.statement em{font-style:normal;color:transparent;-webkit-text-stroke:1.4px var(--ink)}
+.about__grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(32px,6vw,96px);align-items:end}
+.about__text{font-family:"Archivo",system-ui,sans-serif;font-stretch:var(--wide);font-weight:300;font-size:16px;line-height:1.6;color:var(--ink);max-width:44ch}
+.about__text p+p{margin-top:1em}
+.sign{margin-top:28px;font-size:12px;font-weight:700;font-stretch:var(--wide)}
+
+/* ---------- WALL + GRAFFITI ---------- */
+.wall{position:relative;overflow:hidden;background:#EDE8E0 url("images/01-bg-wall-texture.jpg") 0 0/800px 400px repeat}
+.wall::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(58,42,34,.10) 100%)}
+.wall .wrap{position:relative;z-index:2}
+.tag{position:absolute;z-index:1;pointer-events:none;overflow:visible}
+.tag text{font-family:"Sedgwick Ave Display","Permanent Marker",cursive}
+.tag .mk{font-family:"Permanent Marker",cursive}
+.tag .ink{fill:#1b1917}.tag .or{fill:var(--orange)}
+.tag .drip{fill:none;stroke-linecap:round}
+.tag .drip.ink{stroke:#1b1917;fill:none}.tag .drip.or{stroke:var(--orange);fill:none}
+.tag .line{fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+.made.wall{padding-top:clamp(230px,26vw,370px);padding-bottom:clamp(170px,16vw,230px)}
+.tag .hand{font-family:"Caveat","Permanent Marker",cursive;font-weight:600}
+.tag .pk{fill:#F2A2D6}.tag .drip.pk{stroke:#F2A2D6;fill:none}
+.made .split__img img{box-shadow:0 22px 40px -26px rgba(40,28,20,.55)}
+/* coffee — cards as pasted posters */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.card{position:relative;background:rgba(250,248,244,.94);padding:30px 28px 34px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 18px 30px -22px rgba(40,28,20,.45)}
+.card:nth-child(1){transform:rotate(-.8deg)}
+.card:nth-child(2){transform:rotate(.6deg) translateY(10px)}
+.card:nth-child(3){transform:rotate(-.3deg)}
+.card::before{content:"";position:absolute;top:-11px;left:50%;width:84px;height:22px;transform:translateX(-50%) rotate(-3deg);
+  background:rgba(236,230,218,.78);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.card__no{font-size:12px;font-weight:700;color:var(--muted)}
+.card__origin{font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1;margin:18px 0 10px}
+.card__meta{font-size:12px;font-weight:600;color:var(--muted);line-height:1.7}
+.card__notes{margin-top:22px;font-stretch:var(--wide);font-weight:300;font-size:14px;color:var(--ink)}
+.card--accent .card__origin{color:var(--orange)}
+.coffee__note{margin-top:44px;font-size:12px;font-weight:600;color:var(--brown);display:inline-block;background:rgba(250,248,244,.9);padding:8px 12px}
+.about.wall{padding-top:clamp(150px,18vw,250px);padding-bottom:clamp(150px,16vw,220px)}
+.coffee.wall{padding-top:clamp(140px,15vw,200px);padding-bottom:clamp(140px,14vw,190px)}
+
+/* menu — trifold card on photo */
+.menu{background:var(--brown);position:relative;overflow:hidden}
+.menu__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;filter:blur(2px)}
+.menu .wrap{position:relative}
+.menu .label{color:var(--milk)}
+.menu .label::after{background:rgba(255,255,255,.2)}
+.trifold{background:var(--paper);display:grid;grid-template-columns:repeat(3,1fr);box-shadow:0 40px 80px -30px rgba(0,0,0,.55);transform:rotate(-.6deg)}
+.panel{padding:clamp(24px,3vw,42px);border-right:1px solid var(--line);display:flex;flex-direction:column}
+.panel:last-child{border-right:0}
+.panel .wordmark--sm{width:78%;margin-bottom:34px}
+.group + .group{margin-top:36px}
+.group h3{text-align:center;font-size:14px;font-weight:800;margin-bottom:16px}
+.row{display:flex;align-items:baseline;gap:8px;font-size:15px;font-weight:500;line-height:1.5}
+.row small{font-size:8px;font-weight:600;color:var(--muted)}
+.row b{margin-left:auto;font-weight:500}
+.panel__fine{margin-top:auto;padding-top:30px;font-size:8.5px;font-weight:600;color:var(--muted);line-height:1.5}
+
+/* split feature */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.split--rev .split__img{order:2}
+.split__img{position:relative}
+.split__img img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.split__img figcaption{position:absolute;left:14px;bottom:12px;color:var(--paper);font-size:11px;font-weight:700}
+.big{font-size:clamp(34px,5vw,76px);font-weight:700;line-height:.98;letter-spacing:-.02em}
+.big .o{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.list{margin-top:34px;border-top:1px solid var(--ink)}
+.list li{list-style:none;display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px;font-weight:600}
+.list li span:last-child{color:var(--muted)}
+.accent-dot{display:inline-block;width:.62em;height:.62em;background:var(--orange);margin-left:.12em;vertical-align:.05em}
+
+/* visit — window stickers */
+.visit{background:var(--ink);color:var(--milk);position:relative;overflow:hidden}
+.visit .label{color:var(--milk)}
+.visit .label::after{background:rgba(255,255,255,.18)}
+.window{position:relative;border:6px solid #0a0a09;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto 1fr;
+  aspect-ratio:1125/985;background:#1b1715 url("images/02-bg-visit-window.jpg") center/cover no-repeat}
+.pane{position:relative;border:3px solid #0a0a09;background:rgba(18,14,12,.52);padding:22px 20px 26px;text-align:right;font-size:13px;font-weight:600;line-height:1.55;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.pane .badge{align-self:center;margin:0;font-size:14px}
+.pane b{color:var(--orange);font-weight:600}
+.visit__main{grid-column:1/-1;border:3px solid #0a0a09;border-top-width:9px;
+  background:linear-gradient(90deg,rgba(18,14,12,.84) 0%,rgba(18,14,12,.62) 50%,rgba(18,14,12,.28) 100%);
+  padding:clamp(40px,7vw,90px) clamp(20px,5vw,70px);text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.visit__main .hero__sub{color:var(--milk)}
+.visit__main .list{border-color:var(--milk)}
+.visit__main .list li{border-color:rgba(255,255,255,.16)}
+.visit__main .list li span:last-child{color:var(--milk)}
+.visit__main .list li{gap:16px}
+.visit__main .list li span:last-child{text-align:right}
+.visit__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--milk);padding:14px 22px;font-size:12px;font-weight:700;transition:.2s}
+.btn:hover{background:var(--milk);color:var(--ink)}
+.btn--o{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.btn--o:hover{background:var(--milk);border-color:var(--milk)}
+.visit__photo-note{margin-top:14px;font-size:11px;font-weight:600;color:rgba(241,237,230,.45)}
+
+footer{background:var(--ink);color:rgba(241,237,230,.55);font-size:11px;font-weight:600;padding:26px 0 34px;border-top:1px solid rgba(255,255,255,.08)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+
+/* ---------- scale-up for wall blocks (01, 02, 04) ---------- */
+.wall .label{font-size:clamp(13px,1.05vw,16px)}
+.about .statement{font-size:clamp(34px,5.6vw,92px);max-width:16ch}
+.about .about__grid{grid-template-columns:1.25fr 1fr;align-items:center}
+.about .about__text{font-size:clamp(16px,1.35vw,21px);max-width:36ch;line-height:1.55;background:rgba(250,248,244,.72);padding:clamp(18px,2vw,30px);box-shadow:0 14px 30px -24px rgba(40,28,20,.4)}
+.about .sign{font-size:clamp(13px,1vw,15px)}
+.coffee .card{padding:clamp(28px,2.8vw,44px) clamp(24px,2.4vw,38px) clamp(32px,3vw,48px)}
+.coffee .card__no{font-size:clamp(12px,1vw,15px)}
+.coffee .card__origin{font-size:clamp(32px,3.9vw,58px);margin:22px 0 14px}
+.coffee .card__meta{font-size:clamp(12px,1vw,15px)}
+.coffee .card__notes{font-size:clamp(15px,1.25vw,19px);margin-top:26px}
+/* align rows (type / name / meta / notes) across all three cards */
+.cards{align-items:stretch}
+.card{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;align-content:start}
+.coffee .coffee__note{font-size:clamp(12px,1vw,15px);padding:10px 14px}
+.made .split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
+.made .big{font-size:clamp(40px,6vw,96px)}
+.made .split__img figcaption{font-size:clamp(11px,.9vw,13px)}
+
+
+/* ---------- underground tape list ---------- */
+.tape{list-style:none;margin-top:44px;counter-reset:t;display:flex;flex-direction:column;gap:14px}
+.tape li{counter-increment:t;position:relative;display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);
+  padding:clamp(14px,1.4vw,20px) clamp(20px,2vw,30px);color:var(--milk);
+  background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 7px),
+    linear-gradient(180deg,#24201d,#141210);
+  clip-path:polygon(0 10%,1.4% 0,6% 6%,40% 2%,70% 5%,97.8% 0,100% 14%,99.2% 52%,100% 86%,98.4% 100%,60% 95%,22% 100%,1.2% 96%,0 84%,.9% 48%);
+  box-shadow:0 12px 20px -14px rgba(0,0,0,.6);transition:transform .25s ease}
+.tape li:nth-child(odd){transform:rotate(-1.2deg)}
+.tape li:nth-child(even){transform:rotate(.9deg) translateX(clamp(8px,2vw,28px))}
+.tape li:hover{transform:rotate(0) scale(1.02)}
+.tape li::before{content:counter(t,decimal-leading-zero);font-size:clamp(11px,.9vw,13px);font-weight:800;color:var(--orange);align-self:flex-start;margin-top:4px}
+.tape__k{font-family:"Sedgwick Ave Display","Permanent Marker",cursive;font-stretch:100%;font-size:clamp(30px,3vw,48px);line-height:.9;
+  text-transform:lowercase;letter-spacing:.01em;text-shadow:2px 2px 0 rgba(255,90,31,.55)}
+.tape__v{margin-left:auto;text-align:right;font-weight:800;font-size:clamp(11px,1vw,15px);letter-spacing:.06em;text-transform:uppercase;
+  border:1.5px solid rgba(241,237,230,.6);padding:6px 10px;border-radius:2px}
+.tape li:nth-child(2) .tape__v{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.tape li:nth-child(4) .tape__v{border-style:dashed}
+.tape__spark{position:absolute;right:-8px;top:-14px;width:30px;height:30px;fill:var(--orange)}
+@media (max-width:600px){.tape__v{font-size:10px;padding:5px 7px}.tape li:nth-child(even){transform:rotate(.9deg)}}
+
+
+/* ---------- street tags around the storefront ---------- */
+.visit{padding-top:clamp(160px,15vw,220px);padding-bottom:clamp(150px,13vw,200px)}
+.visit .wrap{position:relative;z-index:2}
+.vtag{position:absolute;z-index:1;pointer-events:none;white-space:nowrap;color:var(--milk);
+  font-family:"Sedgwick Ave Display","Permanent Marker",cursive;font-stretch:100%;font-weight:400;line-height:.9;
+  text-transform:lowercase;text-shadow:2px 2px 0 rgba(255,90,31,.55)}
+.vtag--keep{text-transform:none}
+.vtag--o{color:var(--orange);text-shadow:2px 2px 0 rgba(241,237,230,.35)}
+.vtag--dim{opacity:.55}
+.vtag--side{display:none}
+@media (min-width:1380px){.vtag--side{display:block}}
+@media (max-width:900px){.vtag--md{display:none}}
+@media (max-width:600px){.vtag{scale:.72}.vtag--sm{display:none}}
+
+
+/* ---------- spray-paint address tags ---------- */
+.spr{position:absolute;z-index:1;pointer-events:none;height:auto;user-select:none}
+@media (max-width:900px){.spr--md{display:none}}
+@media (max-width:600px){.spr--sm{display:none}}
+
+
+/* ---------- 05 space: glass-block bar background ---------- */
+.glassbar{position:relative;overflow:hidden;background:#b98437 url("images/03-bg-glassbar.PNG") 0 0/900px auto repeat}
+.glassbar::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 70% at 50% 45%,rgba(255,226,160,.18),transparent 60%),
+             radial-gradient(140% 100% at 50% 50%,transparent 55%,rgba(40,22,8,.45) 100%)}
+.glassbar .wrap{position:relative;z-index:1}
+.glassbar .split__img img{box-shadow:0 30px 50px -28px rgba(30,16,4,.7)}
+.space__card{background:rgba(250,248,244,.93);padding:clamp(26px,3.4vw,52px);box-shadow:0 30px 50px -30px rgba(30,16,4,.7);transform:rotate(.6deg)}
+.space__card .about__text{max-width:none;font-size:clamp(15px,1.25vw,19px)}
+.space__card .big{font-size:clamp(36px,5vw,78px)}
+@media (max-width:900px){.space__card{transform:none}.glassbar{background-size:600px auto}}
+
+/* space: photo + text as one poster */
+.space__poster{gap:0;align-items:stretch;grid-template-columns:1fr 1fr;background:rgb(255,255,255);
+  box-shadow:0 30px 50px -30px rgba(30,16,4,.7);transform:rotate(.6deg)}
+.space__poster .space__card{transform:none;box-shadow:none;display:flex;flex-direction:column;justify-content:center}
+.space__poster .split__img img{display:block;width:100%;height:auto;aspect-ratio:auto;box-shadow:none}  /* photo keeps its own proportions; card height follows it */
+.space__poster .split__img figcaption{z-index:1}
+@media (max-width:900px){.space__poster{transform:none}}
+@media (max-width:900px) and (min-width:601px){.glassbar .split.space__poster{grid-template-columns:1fr 1fr}.glassbar .space__poster .split__img{order:2}}
+@media (max-width:600px){.space__poster{grid-template-columns:1fr}}
+
+/* ---------- MOBILE: burger + overlay menu ---------- */
+.burger{display:none;position:fixed;top:14px;right:14px;z-index:130;width:48px;height:48px;border:0;border-radius:0;
+  background:var(--orange);cursor:pointer;-webkit-tap-highlight-color:transparent;box-shadow:0 6px 18px -6px rgba(0,0,0,.5)}
+.burger span{position:absolute;left:14px;width:20px;height:2px;background:var(--ink);transition:transform .3s ease,top .3s ease,background .2s}
+.burger span:nth-child(1){top:19px}.burger span:nth-child(2){top:27px}
+.burger[aria-expanded="true"]{background:var(--orange)}
+.burger[aria-expanded="true"] span{background:var(--ink)}
+.burger[aria-expanded="true"] span:nth-child(1){top:23px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){top:23px;transform:rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:120;background:var(--ink);color:var(--milk);
+  clip-path:circle(0 at calc(100% - 38px) 38px);visibility:hidden;transition:clip-path .55s cubic-bezier(.7,0,.2,1),visibility 0s .55s;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.mnav.is-open{clip-path:circle(150% at calc(100% - 38px) 38px);visibility:visible;transition:clip-path .55s cubic-bezier(.7,0,.2,1)}
+.mnav__inner{min-height:100%;display:flex;flex-direction:column;padding:26px 20px 30px}
+.mnav__top{display:flex;align-items:center;gap:18px;font-size:12px;font-weight:600;height:44px}
+.mnav__tag{font-family:"Sedgwick Ave Display","Permanent Marker",cursive;font-stretch:100%;text-transform:none;color:var(--orange);font-size:30px;transform:rotate(-6deg);text-shadow:2px 2px 0 rgba(241,237,230,.25)}
+.mnav__links{display:flex;flex-direction:column;margin:auto 0;padding:62px 0 64px}
+.mnav__links a{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);
+  font-size:clamp(34px,11vw,56px);font-weight:800;line-height:1;letter-spacing:-.01em;
+  opacity:0;transform:translateY(18px);transition:opacity .4s ease,transform .4s ease,color .2s}
+.mnav__links a i{font-style:normal;font-size:12px;font-weight:700;color:var(--orange);letter-spacing:.04em}
+.mnav__links a:active,.mnav__links a:hover{color:var(--orange)}
+.mnav.is-open .mnav__links a{opacity:1;transform:none}
+.mnav.is-open .mnav__links a:nth-child(1){transition-delay:.18s}
+.mnav.is-open .mnav__links a:nth-child(2){transition-delay:.23s}
+.mnav.is-open .mnav__links a:nth-child(3){transition-delay:.28s}
+.mnav.is-open .mnav__links a:nth-child(4){transition-delay:.33s}
+.mnav.is-open .mnav__links a:nth-child(5){transition-delay:.38s}
+.mnav__info{font-size:12px;font-weight:600;line-height:1.7;color:rgba(241,237,230,.7)}
+.mnav__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.mnav__cta .btn{flex:1 1 140px;justify-content:center;color:var(--milk)}
+.mnav__cta .btn--o{color:var(--ink);flex-basis:100%}
+.mnav__inner{position:relative;overflow:hidden}
+.mnav__top,.mnav__info{position:relative;z-index:1}
+.mnav__links{position:relative}
+.mnav__links a{position:relative;z-index:1}
+.mtag{position:absolute;z-index:0;text-transform:none;letter-spacing:0;pointer-events:none;overflow:visible;height:auto;
+  opacity:0;transform:rotate(var(--r)) scale(.92);transition:opacity .45s ease,transform .45s ease}
+.mtag .h{font-family:"Caveat","Permanent Marker",cursive;font-weight:700;fill:var(--milk)}
+.mtag .m{font-family:"Permanent Marker",cursive;fill:var(--milk);letter-spacing:.02em}
+.mtag .s{font-family:"Sedgwick Ave Display","Permanent Marker",cursive;fill:var(--milk)}
+.mtag .r{font-family:"Reenie Beanie","Caveat",cursive;fill:var(--milk)}
+.mtag .k{font-family:"Rock Salt","Permanent Marker",cursive;fill:var(--milk)}
+.mtag .l{fill:none;stroke:var(--milk);stroke-linecap:round;stroke-linejoin:round}
+.mtag .f{fill:var(--milk)}
+.mnav.is-open .mtag{opacity:.92;transform:rotate(var(--r)) scale(1);transition-delay:var(--d)}
+.mnav.is-open .mtag--dim{opacity:.5}
+@media (max-height:700px){.mnav__links{padding-bottom:84px}}
+body.menu-open{overflow:hidden}
+.btn:active{transform:scale(.97)}
+@media (max-width:900px){
+  .burger{display:block}
+  .nav__links{display:none}
+}
+@media (min-width:901px){.mnav{display:none}}
+
+@media (max-width:900px) and (min-width:601px){.about.wall{padding-top:230px}}
+/* ---------- MOBILE: graffiti placement + tighter wall padding ---------- */
+@media (max-width:600px){
+  .spr.m-ka,.spr.m-ep,.spr.m-cf,.spr.m-a5,.spr.m-a6,.spr.m-ro,.spr.m-a8{display:block!important}
+  .spr.m-ka{top:34px!important;left:5%!important;right:auto!important;bottom:auto!important;width:40vw!important;transform:rotate(-9deg)!important}
+  .spr.m-ep{top:26px!important;right:6%!important;left:auto!important;bottom:auto!important;width:36vw!important;transform:rotate(7deg)!important}
+  .spr.m-cf{bottom:30px!important;left:6%!important;top:auto!important;right:auto!important;width:40vw!important;transform:rotate(-6deg)!important}
+  .spr.m-a5{bottom:52px!important;right:5%!important;top:auto!important;left:auto!important;width:44vw!important;transform:rotate(-4deg)!important}
+  .spr.m-a6{top:30px!important;left:calc(50% - 28vw)!important;right:auto!important;bottom:auto!important;width:56vw!important;transform:rotate(-3deg)!important}
+  .spr.m-ro{bottom:34px!important;left:8%!important;top:auto!important;right:auto!important;width:66vw!important;transform:rotate(-4deg)!important}
+  .spr.m-a8{bottom:40px!important;left:8%!important;top:auto!important;right:auto!important;width:70vw!important;transform:rotate(-4deg)!important}
+  .about.wall{padding-top:190px;padding-bottom:150px}
+  .coffee.wall{padding-top:150px;padding-bottom:150px}
+  .made.wall{padding-bottom:150px}
+  .visit{padding-top:130px;padding-bottom:150px}
+  .visit__cta .btn{flex:1 1 140px;justify-content:center}
+  .visit__cta .btn--o{flex-basis:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .mnav,.mnav__links a{transition:none}
+}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .about__grid,.split{grid-template-columns:1fr}
+  .split--rev .split__img{order:0}
+  .cards{grid-template-columns:1fr;gap:26px}
+  .card:nth-child(n){transform:none}
+  .tag--hide-md{display:none}
+  .made .split,.about .about__grid{grid-template-columns:1fr}
+  .wall{background-size:560px 280px}
+  .trifold{grid-template-columns:1fr;transform:none}
+  .panel{border-right:0;border-bottom:1px solid var(--line)}
+    .window{grid-template-columns:repeat(2,1fr);aspect-ratio:auto;background-size:100% auto;background-position:top center}
+  .pane:nth-child(n+3){display:none}
+  .hero__side{display:none}
+}
+@media (max-width:600px){
+  .nav__links a:not(:last-child){display:none}
+  .hero__img{object-position:66% 50%}
+  .hero__foot{flex-direction:column;gap:4px}
+  .window{grid-template-columns:1fr;aspect-ratio:auto;background-size:100% auto;background-position:top center}
+  .pane:nth-child(n+2){display:none}
+  .tag--hide-sm{display:none}
+  .made.wall{padding-top:190px}
+  .tag--amore{width:92vw!important;right:4vw!important}
+  .tag--big{width:66vw!important}
+  .about.wall{padding-top:170px}
+  .coffee.wall{padding-top:150px}
+}
+</style>
+</head>
+<body>
+
+<!-- reusable outline wordmark -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="spray" x="-10%" y="-20%" width="120%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="4" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="3.2" result="d"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="halo"/>
+      <feComponentTransfer in="halo" result="halo2"><feFuncA type="linear" slope=".22"/></feComponentTransfer>
+      <feMerge><feMergeNode in="halo2"/><feMergeNode in="d"/></feMerge>
+    </filter>
+    <filter id="marker" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="2.2"/>
+    </filter>
+    <filter id="sprayPink" x="-10%" y="-20%" width="120%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="12" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="7" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.6" result="soft"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="halo"/>
+      <feComponentTransfer in="halo" result="halo2"><feFuncA type="linear" slope=".35"/></feComponentTransfer>
+      <feMerge><feMergeNode in="halo2"/><feMergeNode in="soft"/></feMerge>
+    </filter>
+    <symbol id="spark" viewBox="0 0 30 30"><path d="M15 0 C16 10 20 14 30 15 C20 16 16 20 15 30 C14 20 10 16 0 15 C10 14 14 10 15 0Z"/></symbol>
+    <symbol id="heart" viewBox="0 0 60 54"><path d="M30 50 C8 34 2 24 4 14 C6 4 20 0 30 12 C40 0 54 4 56 14 C58 24 52 34 30 50Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/></symbol>
+    <symbol id="arrow" viewBox="0 0 120 60"><path d="M4 44 C34 10 70 8 104 22 M88 6 L108 22 L86 36" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <mask id="stencilCut" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="200">
+      <rect width="900" height="200" fill="#fff"/>
+      <g fill="#000"><rect x="0" y="92" width="900" height="7"/><rect x="74" y="0" width="6" height="200"/><rect x="228" y="0" width="6" height="200"/><rect x="392" y="0" width="6" height="200"/><rect x="556" y="0" width="6" height="200"/><rect x="712" y="0" width="6" height="200"/></g>
+    </mask>
+    <symbol id="wm" viewBox="0 0 1060 150">
+      <text x="0" y="128" textLength="1000" lengthAdjust="spacingAndGlyphs"
+        style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:800;font-size:158px;letter-spacing:-2px"
+        fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">EL PACHO</text>
+      <rect x="1018" y="90" width="40" height="38" fill="var(--orange)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- mobile menu -->
+<button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
+<div class="mnav" id="mnav" aria-hidden="true">
+  <div class="mnav__inner">
+    <div class="mnav__top caps"><span>El Pacho®</span></div>
+    <nav class="mnav__links caps" aria-label="Mobile">
+      <!-- white hand-written tags -->
+      <svg class="mtag" aria-hidden="true" viewBox="0 0 300 80" style="top:-30px;right:16%;width:206px;--r:-7deg;--d:.45s">
+        <g filter="url(#marker)"><text x="4" y="46" class="m" font-size="40" textLength="290" lengthAdjust="spacingAndGlyphs">Specialty Coffee Roasters</text>
+        <path class="l" stroke-width="3" d="M10 62 C90 74 200 72 292 58"/></g>
+      </svg>
+      <svg class="mtag" aria-hidden="true" viewBox="0 0 220 80" style="top:41%;right:-2px;width:150px;--r:8deg;--d:.55s">
+        <g filter="url(#marker)">
+          <path class="l" stroke-width="4" d="M20 14 C8 14 4 26 10 36 L20 54 L30 36 C36 26 32 14 20 14Z"/><circle class="f" cx="20" cy="27" r="4"/>
+          <text x="42" y="50" class="s" font-size="46" textLength="132" lengthAdjust="spacingAndGlyphs">Toronto</text>
+          <path class="f" d="M190 14 l4 10 7-4 -2 12 8-3 -3 7 6 3 -12 6 1 7 -8-3 0 10 -3 0 0-10 -8 3 1-7 -12-6 6-3 -3-7 8 3 -2-12 7 4z"/>
+          <path class="l" stroke-width="3" d="M44 62 C90 70 150 70 206 60"/>
+        </g>
+      </svg>
+      <svg class="mtag mtag--dim" aria-hidden="true" viewBox="0 0 70 200" style="top:57%;right:-8px;width:50px;--r:-3deg;--d:.62s">
+        <g filter="url(#marker)"><text x="0" y="0" class="r" font-size="60" textLength="186" lengthAdjust="spacingAndGlyphs" transform="translate(50 190) rotate(-90)">Every day</text></g>
+      </svg>
+      <svg class="mtag" aria-hidden="true" viewBox="0 0 230 70" style="top:81%;right:14%;width:150px;--r:-12deg;--d:.7s">
+        <g filter="url(#marker)"><text x="4" y="46" class="k" font-size="30" textLength="164" lengthAdjust="spacingAndGlyphs">Come and try</text>
+        <use href="#heart" x="176" y="12" width="46" height="42" style="color:var(--milk)"/></g>
+      </svg>
+      <svg class="mtag mtag--dim" aria-hidden="true" viewBox="0 0 300 50" style="bottom:0;left:8%;width:196px;--r:3deg;--d:.78s">
+        <g filter="url(#marker)"><text x="4" y="36" class="h" font-size="34" textLength="290" lengthAdjust="spacingAndGlyphs">inst: elpachoroasters</text></g>
+      </svg>
+      <a href="#about"><i>01</i>About</a>
+      <a href="#coffee"><i>02</i>Coffee</a>
+      <a href="#menu"><i>03</i>Menu</a>
+      <a href="#space"><i>04</i>Space</a>
+      <a href="#visit"><i>05</i>Visit</a>
+    </nav>
+    <div class="mnav__info caps">
+      <p>40 University Ave, Unit 8 · Toronto<br>Mon–Sun · 7:00 — 18:00</p>
+      <div class="mnav__cta">
+        <a class="btn btn--o" href="https://maps.google.com/?q=40+University+Ave+Unit+8+Toronto" target="_blank" rel="noopener">Get directions ↗</a>
+        <a class="btn" href="tel:+14379991188">Call ↗</a>
+        <a class="btn" href="https://instagram.com/elpachoroasters" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <img class="hero__img" src="images/04-hero.jpg" alt="El Pacho coffee bar with orange espresso taps and the Mona Lisa mural">
+  <nav class="nav caps">
+    <a href="#top">El Pacho®</a>
+    <div class="nav__links">
+      <a href="#about">About</a><a href="#coffee">Coffee</a><a href="#menu">Menu</a><a href="#space">Space</a><a href="#visit">Visit</a>
+    </div>
+  </nav>
+
+  <div class="hero__side caps">
+    <span class="badge">7 — 18</span><br>
+    @elpachoroasters<br>
+    Open every day<br>
+    40 University Ave
+  </div>
+
+  <div class="hero__mark">
+    <svg class="wordmark" viewBox="0 0 1060 150" role="img" aria-label="El Pacho"><use href="#wm"/></svg>
+    <div class="hero__sub caps">Coffee Roasters</div>
+    <div class="hero__foot caps">
+      <span>Single origin · roasted in-house · Toronto</span>
+      <span>Scroll ↓</span>
+    </div>
+  </div>
+</header>
+
+<div class="ticker caps" aria-hidden="true">
+  <div class="ticker__row">
+    <span>Single origin only</span><span>Roasted on site</span><span>Syrups made from scratch</span><span>Pastries baked in-house</span><span>Ukrainian family roastery</span><span>Across from Union Station</span>
+    <span>Single origin only</span><span>Roasted on site</span><span>Syrups made from scratch</span><span>Pastries baked in-house</span><span>Ukrainian family roastery</span><span>Across from Union Station</span>
+  </div>
+</div>
+
+<section class="about wall" id="about">
+  <!-- graffiti -->
+  <img class="spr m-ka" src="images/g-kristina-alex.webp" alt="" aria-hidden="true" loading="lazy" style="top:58px;left:9%;width:min(19vw,260px);transform:rotate(-11deg)">
+  <img class="spr spr--sm" src="images/g-7am-6pm.webp" alt="" aria-hidden="true" loading="lazy" style="top:14px;left:45%;width:min(15vw,210px);transform:rotate(5deg)">
+  <img class="spr spr--md m-a5" src="images/05-sticker-about.webp" alt="" aria-hidden="true" loading="lazy" style="top:168px;right:4%;width:min(24vw,330px);transform:rotate(-6deg)">
+  <img class="spr spr--sm m-cf" src="images/g-coffee.webp" alt="" aria-hidden="true" loading="lazy" style="bottom:40px;left:6%;width:min(19vw,260px);transform:rotate(-7deg)">
+  <img class="spr spr--sm m-ep" src="images/g-el-pacho.webp" alt="" aria-hidden="true" loading="lazy" style="bottom:18px;right:6%;width:min(21vw,290px);transform:rotate(7deg)">
+  <div class="wrap">
+    <div class="label caps">About</div>
+    <div class="about__grid">
+      <h2 class="statement caps rv">Everything <em>from scratch.</em> Every cup the same.</h2>
+      <div class="about__text rv">
+        <p>El Pacho is a small Ukrainian family roastery a few steps from Union Station. Kristina and Alex roast every bean on site, bake the pastries and cook the syrups themselves.</p>
+        <p>No shortcuts, no artificial anything. Just the idea that your cup should taste exactly right — no matter who is behind the bar.</p>
+        <div class="sign caps">— Kristina &amp; Alex</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coffee wall" id="coffee">
+  <!-- graffiti -->
+  <img class="spr spr--md m-a6" src="images/06-sticker-coffee.webp" alt="" aria-hidden="true" loading="lazy" style="top:30px;left:calc(50% - min(11vw,150px));width:min(22vw,300px);transform:rotate(-3deg)">
+  <img class="spr spr--md m-ro" src="images/g-roasters.webp" alt="" aria-hidden="true" loading="lazy" style="bottom:44px;left:7%;width:min(27vw,380px);transform:rotate(-5deg)">
+  <svg class="tag tag--hide-md" style="bottom:34px;right:9%;width:230px;transform:rotate(-4deg)" viewBox="0 0 220 110" aria-hidden="true">
+    <g filter="url(#marker)" transform="rotate(10 110 55)">
+      <text x="10" y="60" class="hand ink" font-size="54" textLength="180" lengthAdjust="spacingAndGlyphs">Toronto</text>
+      <path class="line" stroke="#1b1917" stroke-width="3" d="M8 74 C70 86 140 84 200 70"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="label caps">On the roaster this week</div>
+    <div class="cards">
+      <article class="card rv">
+        <div class="card__no caps">Espresso Medium</div>
+        <div class="card__origin caps">Ethiopia</div>
+        <div class="card__meta caps">Guji · Washed<br>Heirloom</div>
+        <p class="card__notes">Apricot, black tea, honey.</p>
+      </article>
+      <article class="card rv">
+        <div class="card__no caps">Espresso Medium</div>
+        <div class="card__origin caps">Colombia</div>
+        <div class="card__meta caps">Huila · Natural<br>Caturra</div>
+        <p class="card__notes">Dark chocolate, cherry, cane sugar.</p>
+      </article>
+      <article class="card card--accent rv">
+        <div class="card__no caps">Pour-over · Light</div>
+        <div class="card__origin caps">Guest</div>
+        <div class="card__meta caps">Rotating · Europe<br>&amp; finds from the road</div>
+        <p class="card__notes">Ask the bar what's on today.</p>
+      </article>
+    </div>
+    <p class="coffee__note caps">Two espressos rotate at a time · pour-overs change often · Ethiopia whenever we can get it</p>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <img class="menu__bg" src="images/07-bg-menu.jpg" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="label caps"> Menu</div>
+    <div class="trifold caps rv">
+      <div class="panel">
+        <svg class="wordmark wordmark--sm" viewBox="0 0 1060 150" aria-hidden="true"><use href="#wm"/></svg>
+        <div class="group"><h3>Black coffee</h3>
+          <div class="row">Espresso <small>30 ml</small><b>3.50</b></div>
+          <div class="row">Americano <small>240 ml</small><b>4.25</b></div>
+          <div class="row">Pour-over <small>300 ml</small><b>6.00</b></div>
+        </div>
+        <div class="group"><h3>With milk</h3>
+          <div class="row">Cortado <small>120 ml</small><b>4.75</b></div>
+          <div class="row">Cappuccino <small>180 ml</small><b>5.25</b></div>
+          <div class="row">Flat white <small>180 ml</small><b>5.25</b></div>
+          <div class="row">Latte <small>300 ml</small><b>5.75</b></div>
+        </div>
+        <p class="panel__fine">Oat, almond or coconut milk +0.75</p>
+      </div>
+      <div class="panel">
+        <div class="group"><h3>House syrups</h3>
+          <div class="row">Honey lavender latte <b>6.50</b></div>
+          <div class="row">Vanilla bean latte <b>6.25</b></div>
+          <div class="row">Cardamom latte <b>6.50</b></div>
+        </div>
+        <div class="group"><h3>Cold</h3>
+          <div class="row">Iced latte <small>350 ml</small><b>6.00</b></div>
+          <div class="row">Espresso tonic <small>350 ml</small><b>6.50</b></div>
+          <div class="row">Cold brew <small>350 ml</small><b>5.50</b></div>
+        </div>
+        <div class="group"><h3>Not coffee</h3>
+          <div class="row">Matcha latte <b>6.00</b></div>
+          <div class="row">Hot chocolate <b>5.00</b></div>
+          <div class="row">Tea <b>3.75</b></div>
+        </div>
+        <p class="panel__fine">All syrups are cooked in-house. No artificial flavours.</p>
+      </div>
+      <div class="panel">
+        <svg class="wordmark wordmark--sm" viewBox="0 0 1060 150" aria-hidden="true"><use href="#wm"/></svg>
+        <div class="group"><h3>Bakery</h3>
+          <div class="row">Butter croissant <b>4.25</b></div>
+          <div class="row">Almond croissant <b>5.50</b></div>
+          <div class="row">Cinnamon bun <b>5.00</b></div>
+          <div class="row">Syrnyky <b>7.50</b></div>
+          <div class="row">Honey cake <b>6.50</b></div>
+          <div class="row">Cookie <b>3.25</b></div>
+        </div>
+        <p class="panel__fine">Baked every morning by Kristina. When it's gone, it's gone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="made wall">
+  <!-- graffiti -->
+  <img class="spr tag--amore" src="images/09-graffiti-made.webp" alt="" aria-hidden="true" loading="lazy" style="top:18px;right:4%;width:min(46vw,640px);transform:rotate(-7deg)">
+  <img class="spr spr--md" src="images/g-union-tag.webp" alt="" aria-hidden="true" loading="lazy" style="top:120px;left:20%;width:min(18vw,250px);transform:rotate(9deg)">
+  <svg class="tag tag--hide-md" style="bottom:210px;left:7%;width:280px;transform:rotate(5deg)" viewBox="0 0 260 90" aria-hidden="true">
+    <g filter="url(#marker)" transform="rotate(-6 130 45)">
+      <use href="#heart" x="0" y="18" width="46" height="42" style="color:var(--orange)"/>
+      <text x="56" y="56" class="mk ink" font-size="34" textLength="196" lengthAdjust="spacingAndGlyphs">build different</text>
+      <path class="line" stroke="#1b1917" stroke-width="3" d="M58 70 C120 80 190 78 250 66"/>
+    </g>
+  </svg>
+  <!-- vertical 2024 -->
+  <svg class="tag tag--hide-md" style="top:44%;right:1.5%;width:70px" viewBox="0 0 70 220" aria-hidden="true">
+    <g filter="url(#marker)"><text x="0" y="0" class="hand ink" font-size="58" transform="translate(52 200) rotate(-90)">2024</text></g>
+  </svg>
+  <!-- handwriting kept -->
+  <svg class="tag" style="bottom:22px;left:50%;transform:translateX(-50%);width:min(88vw,860px)" viewBox="0 0 860 110" aria-hidden="true">
+    <g filter="url(#marker)" transform="rotate(-1.5 430 55)">
+      <text x="10" y="52" class="hand ink" font-size="50" textLength="700" lengthAdjust="spacingAndGlyphs">Even in the end — it's all about LOVE!</text>
+      <text x="14" y="98" class="mk ink" font-size="26" textLength="420" lengthAdjust="spacingAndGlyphs">SMALL ROASTERY WITH HUGE BEANS</text>
+      <text x="560" y="100" class="hand ink" font-size="44">"El Pacho"</text>
+    </g>
+  </svg>
+  <div class="wrap split">
+    <figure class="split__img rv">
+      <img src="images/10-made-crew.jpg" alt="Barista in an El Pacho t-shirt: El Pacho Coffee Roasters build different">
+      <figcaption class="caps">Build different · El Pacho crew</figcaption>
+    </figure>
+    <div class="rv">
+      <div class="label caps">Made in house</div>
+      <h2 class="big caps">Roasted,<br>baked &amp;<br><span class="o">cooked</span> <span style="white-space:nowrap">here<span class="accent-dot"></span></span></h2>
+      <ul class="tape">
+        <li><span class="tape__k">coffee</span><span class="tape__v">Roasted on site</span></li>
+        <li><span class="tape__k">pastries</span><span class="tape__v">Baked every morning</span></li>
+        <li><span class="tape__k">syrups</span><span class="tape__v">No artificial flavours</span></li>
+        <li><span class="tape__k">beans</span><span class="tape__v">Take a bag home</span><svg class="tape__spark" viewBox="0 0 30 30" aria-hidden="true"><use href="#spark"/></svg></li>
+      </ul>
+      <svg class="tag" style="position:relative;display:block;margin:30px 0 0 auto;width:clamp(200px,20vw,290px)" viewBox="0 0 220 120" aria-hidden="true">
+        <g filter="url(#marker)" transform="rotate(-14 110 60)">
+          <text x="20" y="62" class="hand ink" font-size="50" textLength="180" lengthAdjust="spacingAndGlyphs">In every cup</text>
+          <path class="line" stroke="#1b1917" stroke-width="3" d="M40 80 C80 96 150 94 196 76"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="space glassbar" id="space">
+  <div class="wrap"><div class="rv">
+  <div class="split split--rev space__poster">
+    <figure class="split__img">
+      <img src="images/11-space-interior.jpg" alt="Hand-painted Mona Lisa mural wearing sunglasses and holding an espresso cup">
+      <figcaption class="caps">Our regular · since day one</figcaption>
+    </figure>
+    <div class="space__card">
+      <div class="label caps">The space</div>
+      <h2 class="big caps">Even <span class="o">Mona</span> takes it black.</h2>
+      <p class="about__text" style="margin-top:28px">Hand-painted walls, fresh flowers, glass-block bar and a roastery you can watch from your seat. A small room for a busy corner: grab your espresso on the way to the train — or catch a seat for a second pour-over.</p>
+    </div>
+  </div>
+  </div></div>
+</section>
+
+<section class="visit" id="visit">
+  <!-- street tags on the dark background -->
+  <span class="vtag" aria-hidden="true" style="top:42px;left:5%;font-size:clamp(46px,5vw,76px);transform:rotate(-7deg)">amore</span>
+  <span class="vtag vtag--o vtag--keep" aria-hidden="true" style="top:30px;right:6%;font-size:clamp(52px,6vw,92px);transform:rotate(5deg)">elPacho</span>
+  <img class="spr spr--sm m-a8" src="images/08-sticker-made.webp" alt="" aria-hidden="true" loading="lazy" style="bottom:36px;left:5%;width:min(26vw,360px);transform:rotate(-4deg)">
+  <span class="vtag vtag--md vtag--dim" aria-hidden="true" style="bottom:40px;right:6%;font-size:clamp(40px,4vw,62px);transform:rotate(-6deg)">fresh beans</span>
+  <span class="vtag vtag--side vtag--dim" aria-hidden="true" style="top:34%;right:-8px;font-size:52px;transform:rotate(90deg);transform-origin:right top">amore</span>
+  <div class="wrap">
+    <div class="label caps">Visit</div>
+    <div class="window caps" role="img" aria-label="El Pacho storefront window at night with the orange butterfly sign">
+      <div class="pane"><span class="badge">EST. TO</span><div>@elpachoroasters<br>Coffee roasters<br><b>40 University Ave</b></div></div>
+      <div class="pane"><span class="badge">EST. TO</span><div>@elpachoroasters<br>Coffee roasters<br><b>40 University Ave</b></div></div>
+      <div class="pane"><span class="badge">EST. TO</span><div>@elpachoroasters<br>Coffee roasters<br><b>40 University Ave</b></div></div>
+      <div class="pane"><span class="badge">EST. TO</span><div>@elpachoroasters<br>Coffee roasters<br><b>40 University Ave</b></div></div>
+      <div class="visit__main">
+        <svg class="wordmark" viewBox="0 0 1060 150" style="color:var(--milk)" aria-hidden="true"><use href="#wm"/></svg>
+        <div class="hero__sub caps">Coffee Roasters</div>
+        <ul class="list caps" style="max-width:640px">
+          <li><span>Address</span><span>40 University Ave, Unit 8 · Toronto</span></li>
+          <li><span>Mon–Sun</span><span>7:00 — 18:00</span></li>
+          <li><span>Phone</span><span>+1 437 999 1188</span></li>
+          <li><span>Nearby</span><span>Across from Union Station</span></li>
+        </ul>
+        <div class="visit__cta caps">
+          <a class="btn btn--o" href="https://maps.google.com/?q=40+University+Ave+Unit+8+Toronto" target="_blank" rel="noopener">Get directions ↗</a>
+          <a class="btn" href="tel:+14379991188">Call ↗</a>
+          <a class="btn" href="https://instagram.com/elpachoroasters" target="_blank" rel="noopener">Instagram ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="caps">
+  <div class="wrap">
+    <span>El Pacho Coffee Roasters · Toronto</span>
+    <span>Concept website study by Mryna · Not affiliated with El Pacho</span>
+  </div>
+</footer>
+
+<script>
+/* reveal on scroll (with fallback for old browsers) */
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -5% 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
+
+/* mobile menu */
+(function(){
+  var btn=document.querySelector('.burger'), nav=document.getElementById('mnav');
+  if(!btn||!nav) return;
+  function set(open){
+    nav.classList.toggle('is-open',open);
+    nav.setAttribute('aria-hidden',open?'false':'true');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    document.body.classList.toggle('menu-open',open);
+  }
+  btn.addEventListener('click',function(){set(!nav.classList.contains('is-open'))});
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+  window.addEventListener('resize',function(){if(window.innerWidth>900)set(false)});
+})();
+</script>
+</body>
+</html>
